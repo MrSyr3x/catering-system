@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Catering System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="material-icons">restaurant_menu</span>
+                <span class="brand-text">Catering System</span>
+            </div>
+            <div class="nav-links">
+                <span id="userGreeting" style="color: var(--text-secondary); font-size: 1.1rem;"></span>
+                <button id="logoutBtn" class="btn-primary">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard">
+        <div class="dashboard-header">
+            <h1 class="dashboard-title">User Dashboard</h1>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button id="viewCartBtn" class="btn-primary" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="material-icons" style="font-size: 1.5rem;">shopping_cart</span>
+                    View Cart (<span id="cartCount">0</span>)
+                </button>
+                <button id="viewOrdersBtn" class="btn-primary" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="material-icons" style="font-size: 1.5rem;">list_alt</span>
+                    My Orders
+                </button>
+            </div>
+        </div>
+
+        <div id="alertMessage"></div>
+
+        <!-- Products Section -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <span class="material-icons card-icon">restaurant</span>
+                <h2 class="card-title">Available Products</h2>
+            </div>
+            <div id="productsGrid" class="product-grid">
+                <!-- Products will load here -->
+            </div>
+        </div>
+
+        <!-- Cart Modal -->
+        <div id="cartModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Your Cart</h2>
+                    <button class="close-modal" onclick="closeCartModal()">&times;</button>
+                </div>
+                <div id="cartItems"></div>
+                <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 2px solid var(--platinum-2);">
+                    <p style="font-size: 1.75rem; font-weight: 700; color: var(--peach); margin-bottom: 1.5rem;">
+                        Total: ₹<span id="cartTotal">0</span>
+                    </p>
+                    <button id="placeOrderBtn" class="btn-submit">Place Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Orders Modal -->
+        <div id="ordersModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>My Orders</h2>
+                    <button class="close-modal" onclick="closeOrdersModal()">&times;</button>
+                </div>
+                <div id="ordersList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/user.js"></script>
+</body>
+</html>
