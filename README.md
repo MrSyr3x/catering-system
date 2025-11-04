@@ -324,14 +324,3 @@ If you encounter any issues or have suggestions for improvement:
 🌍 Passionate about web development, open source, and empowering rural entrepreneurship.  
 🔗 [GitHub Profile](https://github.com/MrSyr3x)
 
----
-
-## 🏁 License
-
-This project is released under the **MIT License** — free for personal and commercial use with proper attribution.  
-You can modify, distribute, and use it freely while crediting the author.
-
----
-
-> _“Technology should not just connect devices — it should connect people, ideas, and opportunities.”_  
-> — **Aditya (MrSyr3x)**  
