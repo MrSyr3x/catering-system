@@ -6,6 +6,11 @@
 
 ---
 
+## 🖼️ Preview  
+![Catering Reservation and Ordering System](./assets/Image.png)
+
+---
+
 ## 🌐 Overview
 
 The **Catering Reservation and Ordering System** is a modern web application that connects local caterers with customers worldwide.  
