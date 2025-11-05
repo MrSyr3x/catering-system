@@ -1,9 +1,7 @@
-// Import Firebase modules
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getAuth } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-// YOUR Firebase configuration (REPLACE THIS WITH YOUR CONFIG FROM STEP 2)
 const firebaseConfig = {
   apiKey: "AIzaSyDAp_mY_RY9wG5RdEq7JQesTXNNTgtHgXU",
   authDomain: "catering-system-fe8e5.firebaseapp.com",
@@ -14,7 +12,6 @@ const firebaseConfig = {
   measurementId: "G-LDED2E9SJZ"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);

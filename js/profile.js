@@ -4,18 +4,15 @@ import { doc, getDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/10.7.
 
 let currentUser = null;
 
-// Check authentication
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
         window.location.href = 'login.html';
     } else {
         currentUser = user;
-        console.log('🔐 User authenticated:', user.email); // Logging
         loadProfile();
     }
 });
 
-// Load user profile
 async function loadProfile() {
     try {
         const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
@@ -25,15 +22,12 @@ async function loadProfile() {
             document.getElementById('email').value = userData.email || '';
             document.getElementById('phone').value = userData.phone || '';
             document.getElementById('address').value = userData.address || '';
-            console.log('✅ Profile loaded successfully'); // Logging
         }
     } catch (error) {
-        console.error('❌ Error loading profile:', error); // Logging
         showAlert('Error loading profile', 'error');
     }
 }
 
-// Update profile
 document.getElementById('profileForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -47,28 +41,22 @@ document.getElementById('profileForm').addEventListener('submit', async (e) => {
             phone,
             address
         });
-        console.log('✅ Profile updated:', { fullName, phone }); // Logging
         showAlert('Profile updated successfully!', 'success');
         setTimeout(() => window.location.href = 'user-dashboard.html', 1500);
     } catch (error) {
-        console.error('❌ Error updating profile:', error); // Logging
         showAlert('Error updating profile', 'error');
     }
 });
 
-// Logout
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-    console.log('🚪 User logging out'); // Logging
     await signOut(auth);
     window.location.href = 'login.html';
 });
 
-// Go back
 window.goBack = function() {
     window.location.href = 'user-dashboard.html';
 };
 
-// Show alert
 function showAlert(message, type) {
     const alertDiv = document.getElementById('alertMessage');
     alertDiv.innerHTML = `

@@ -8,7 +8,6 @@ import {
     setDoc 
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
 
-// Show error message
 function showError(message) {
     const errorDiv = document.getElementById('errorMessage');
     errorDiv.innerHTML = `
@@ -19,7 +18,6 @@ function showError(message) {
     `;
 }
 
-// Show success message
 function showSuccess(message) {
     const errorDiv = document.getElementById('errorMessage');
     errorDiv.innerHTML = `
@@ -30,7 +28,6 @@ function showSuccess(message) {
     `;
 }
 
-// Register Form
 const registerForm = document.getElementById('registerForm');
 if (registerForm) {
     registerForm.addEventListener('submit', async (e) => {
@@ -44,11 +41,9 @@ if (registerForm) {
         const userType = document.getElementById('userType').value;
 
         try {
-            // Create user
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
 
-            // Save user data to Firestore
             await setDoc(doc(db, 'users', user.uid), {
                 fullName,
                 email,
@@ -60,7 +55,6 @@ if (registerForm) {
 
             showSuccess('Account created successfully! Redirecting...');
             
-            // Redirect based on user type
             setTimeout(() => {
                 if (userType === 'admin') {
                     window.location.href = 'admin-dashboard.html';
@@ -75,7 +69,6 @@ if (registerForm) {
     });
 }
 
-// Login Form
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async (e) => {
@@ -90,7 +83,6 @@ if (loginForm) {
             
             showSuccess('Login successful! Redirecting...');
             
-            // Redirect based on selected user type
             setTimeout(() => {
                 if (userType === 'admin') {
                     window.location.href = 'admin-dashboard.html';

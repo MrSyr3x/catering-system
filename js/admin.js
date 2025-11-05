@@ -12,7 +12,6 @@ import {
 
 let currentAdmin = null;
 
-// Check authentication
 onAuthStateChanged(auth, async (user) => {
     if (!user) {
         window.location.href = 'login.html';
@@ -28,13 +27,11 @@ onAuthStateChanged(auth, async (user) => {
     }
 });
 
-// Logout
 document.getElementById('logoutBtn').addEventListener('click', async () => {
     await signOut(auth);
     window.location.href = 'login.html';
 });
 
-// Add product
 document.getElementById('addProductForm').addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -61,7 +58,6 @@ document.getElementById('addProductForm').addEventListener('submit', async (e) =
     }
 });
 
-// Load products
 async function loadProducts() {
     const productsGrid = document.getElementById('productsGrid');
     productsGrid.innerHTML = '<p style="color: var(--subtle);">Loading products...</p>';
@@ -101,7 +97,6 @@ async function loadProducts() {
     }
 }
 
-// Delete product
 window.deleteProduct = async function(productId) {
     if (confirm('Are you sure you want to delete this product?')) {
         try {
@@ -114,7 +109,6 @@ window.deleteProduct = async function(productId) {
     }
 }
 
-// Load orders
 async function loadOrders() {
     const ordersList = document.getElementById('ordersList');
     ordersList.innerHTML = '<p style="color: var(--subtle);">Loading orders...</p>';
@@ -156,7 +150,6 @@ async function loadOrders() {
     }
 }
 
-// Update order status
 window.updateOrderStatus = async function(orderId, newStatus) {
     try {
         await updateDoc(doc(db, 'orders', orderId), {
@@ -168,7 +161,6 @@ window.updateOrderStatus = async function(orderId, newStatus) {
     }
 }
 
-// Show alert
 function showAlert(message, type) {
     const alertDiv = document.getElementById('alertMessage');
     alertDiv.innerHTML = `
