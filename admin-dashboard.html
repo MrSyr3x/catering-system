@@ -1,86 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Catering System</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Catering System</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <meta name="theme-color" content="#a06f91">
 </head>
+
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="material-icons">restaurant_menu</span>
-                <span class="brand-text">Catering System - Admin</span>
-            </div>
-            <div class="nav-links">
-                <span id="adminGreeting" style="color: var(--text-secondary); font-size: 1.1rem;"></span>
-                <button id="logoutBtn" class="btn-primary">Logout</button>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="material-icons">restaurant_menu</span>
+        <span class="brand-text">Catering System</span>
+      </div>
+      <div class="nav-links">
+        <span id="adminGreeting" style="color: var(--text-secondary); font-size: 1.1rem;"></span>
+        <a href="index.html" class="btn-primary" style="margin-right:1rem;">Home</a>
+        <button id="logoutBtn" class="btn-primary">Logout</button>
+      </div>
+    </div>
+  </nav>
 
-    <div class="dashboard">
-        <div class="dashboard-header">
-            <h1 class="dashboard-title">Admin Dashboard</h1>
-        </div>
-
-        <div id="alertMessage"></div>
-
-        <div class="dashboard-grid">
-            <!-- Add Product Card -->
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <span class="material-icons card-icon">add_circle</span>
-                    <h2 class="card-title">Add New Product</h2>
-                </div>
-                <form id="addProductForm">
-                    <div class="form-group">
-                        <label for="productName">Product Name</label>
-                        <input type="text" id="productName" required placeholder="e.g., Biryani">
-                    </div>
-                    <div class="form-group">
-                        <label for="productDescription">Description</label>
-                        <textarea id="productDescription" rows="3" required placeholder="Describe the product"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="productPrice">Price (₹)</label>
-                        <input type="number" id="productPrice" required placeholder="e.g., 299">
-                    </div>
-                    <div class="form-group">
-                        <label for="productCategory">Category</label>
-                        <input type="text" id="productCategory" required placeholder="e.g., Main Course">
-                    </div>
-                    <button type="submit" class="btn-submit">Add Product</button>
-                </form>
-            </div>
-
-            <!-- View Orders Card -->
-            <div class="dashboard-card">
-                <div class="card-header">
-                    <span class="material-icons card-icon">list_alt</span>
-                    <h2 class="card-title">Recent Orders</h2>
-                </div>
-                <div id="ordersList" style="max-height: 400px; overflow-y: auto;">
-                    <!-- Orders will load here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- All Products Section -->
-        <div class="dashboard-card">
-            <div class="card-header">
-                <span class="material-icons card-icon">inventory</span>
-                <h2 class="card-title">All Products</h2>
-            </div>
-            <div id="productsGrid" class="product-grid">
-                <!-- Products will load here -->
-            </div>
-        </div>
+  <div class="dashboard">
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <p style="color: var(--text-secondary);">Manage catering products and customer orders below</p>
     </div>
 
-    <script type="module" src="js/admin.js"></script>
+    <div id="alertMessage"></div>
+
+    <div class="dashboard-card">
+      <div class="card-header">
+        <span class="material-icons card-icon">add_box</span>
+        <h2 class="card-title">Add New Product</h2>
+      </div>
+      <form id="addProductForm" style="margin-top: 1rem;">
+        <div class="form-group">
+          <label for="productName">Product Name</label>
+          <input type="text" id="productName" required placeholder="Enter product name">
+        </div>
+
+        <div class="form-group">
+          <label for="productDescription">Description</label>
+          <textarea id="productDescription" rows="3" required placeholder="Describe the product"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="productPrice">Price (₹)</label>
+          <input type="number" id="productPrice" required placeholder="Enter product price">
+        </div>
+
+        <div class="form-group">
+          <label for="productCategory">Category</label>
+          <input type="text" id="productCategory" required placeholder="e.g., North Indian, Desserts, Beverages">
+        </div>
+
+        <button type="submit" class="btn-submit">Add Product</button>
+      </form>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-header">
+        <span class="material-icons card-icon">restaurant</span>
+        <h2 class="card-title">Available Products</h2>
+      </div>
+      <div id="productsGrid" class="product-grid"></div>
+    </div>
+
+    <div class="dashboard-card">
+      <div class="card-header">
+        <span class="material-icons card-icon">list_alt</span>
+        <h2 class="card-title">All Orders</h2>
+      </div>
+      <div id="ordersList"></div>
+    </div>
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
 </body>
 </html>
